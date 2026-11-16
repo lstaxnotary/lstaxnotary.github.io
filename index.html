@@ -785,44 +785,9 @@
 
 <section class="book" id="book">
   <div class="wrap">
-    <div class="reveal" style="text-align:center;">
-      <div class="eyebrow">Book an appointment</div>
-      <h2 class="section-title">Tell Us What You <span class="accent">Need</span></h2>
-      <p class="section-sub">Send your request and we'll confirm your appointment by phone or text.</p>
+    <div class="book-form" role="note" style="text-align:center;">
+      <p style="margin:0;">Online requests are temporarily unavailable. Please call <a href="tel:+13057078504">(305) 707-8504</a> for assistance. Do not email sensitive documents or personal financial or medical information.</p>
     </div>
-    <form class="book-form pop" data-delay="1" action="https://api.web3forms.com/submit" method="POST">
-      <input type="hidden" name="access_key" value="74478258-4548-4d47-903b-8aa2c5d3f922">
-      <input type="hidden" name="subject" value="New booking request from lstaxnotary.com (EN)">
-      <input type="hidden" name="from_name" value="L&S Website">
-      <input type="hidden" name="redirect" value="https://lstaxnotary.com/">
-      <input type="hidden" name="language" value="English">
-      <div class="form-row">
-        <label>Your name
-          <input type="text" name="name" required autocomplete="name" placeholder="Full name">
-        </label>
-        <label>Phone
-          <input type="tel" name="phone" required autocomplete="tel" placeholder="(305) 555-0000">
-        </label>
-      </div>
-      <label>What do you need?
-        <select name="service" required>
-          <option value="" disabled selected>Choose a service</option>
-          <option>Mobile notary visit</option>
-          <option>Remote online notarization</option>
-          <option>Tax preparation</option>
-          <option>Life insurance or annuities</option>
-          <option>Something else</option>
-        </select>
-      </label>
-      <label>Preferred date and time
-        <input type="text" name="preferred_time" placeholder="e.g. Saturday morning, or Dec 3 after 5pm">
-      </label>
-      <label>Anything we should know? (optional)
-        <textarea name="message" placeholder="Details about your documents, taxes, or coverage questions"></textarea>
-      </label>
-      <button type="submit">Request My Appointment</button>
-      <p class="form-note">By appointment only. Prefer to talk? Call or text <a href="tel:+13057078504">(305) 707-8504</a>.</p>
-    </form>
   </div>
 </section>
 

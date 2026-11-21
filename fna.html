@@ -515,7 +515,33 @@
     .calc-card { border: none; box-shadow: none; padding: 0; }
   }
 </style>
-<link rel="icon" type="image/svg+xml" href="/logo-badge.svg"><style>img.brand-logo{width:180px;height:180px}@media (max-width:820px){img.brand-logo{width:150px;height:150px}.brand{flex-direction:column;align-items:flex-start;gap:10px}}</style></head>
+<link rel="icon" type="image/svg+xml" href="/logo-badge.svg"><style>img.brand-logo{width:180px;height:180px}@media (max-width:820px){img.brand-logo{width:150px;height:150px}.brand{flex-direction:column;align-items:flex-start;gap:10px}}</style><style>
+/* warm no-lines restyle + responsive fit (matches main site) */
+:root{--bg:#fdfaf3;--azure-soft:#f1e9d8;--azure:#c9a227;--royal:#16244d;--royal-dark:#0f1a3a;--line:#e9e2d2}
+.topbar{background:#f1e9d8;color:#16244d}
+.topbar a{color:#16244d}
+.btn-royal{color:#ecc95f;box-shadow:0 6px 22px rgba(22,36,77,.35)}
+.btn-royal:hover{box-shadow:0 12px 30px rgba(22,36,77,.45)}
+.btn-print{color:#16244d;border-color:#16244d}
+.btn-print:hover{background:#f8f3ea}
+.how{border-top:0;border-bottom:0}
+.faq details{border:0;box-shadow:0 6px 20px rgba(22,36,77,.07)}
+.calc-card{border:0}
+.calc-note{border-top:0}
+.r-table th,.r-table td{border-bottom:0}
+.svc-body li{border-bottom:0}
+.meet-badges span{color:#8a6d1f}
+.r-pill{background:#f1e9d8;color:#8a6d1f}
+.debt-x{background:#f8e9e2}
+@media (min-width:821px) and (max-width:1024px){
+.steps,.why-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.meet-card{grid-template-columns:1fr;gap:24px;text-align:center}
+.meet-badges{justify-content:center}
+}
+.calc{background:#f8f3ea}
+header{background:#fdfaf3}
+</style>
+</head>
 <body>
 <header>
   <div class="wrap">

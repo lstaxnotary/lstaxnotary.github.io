@@ -92,7 +92,22 @@ body{background:#f6f1e8}
 .wa-help-panel{border:0;box-shadow:0 8px 30px #17324d1f}
 .whatsapp-option{border:0;box-shadow:0 3px 14px #16244d10}
 .correction-review{border-bottom:0}
-</style></head><body><main class="site-demo isolated-services"><nav class="production-language"><a href="index.html">English</a><a href="es.html">Español</a></nav><div class="topbar">
+</style><style>
+/* responsive-fit: tablet stacking + balanced videos */
+@media (min-width:768px) and (max-width:1024px){
+.site-demo .svc{grid-template-columns:1fr;gap:24px;margin:28px 0 44px}
+.site-demo .svc-visual{position:static}
+.site-demo .svc-visual img{aspect-ratio:3/2}
+.site-demo .quick-grid,.site-demo .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+.site-demo .hero-split{grid-template-columns:1fr!important}
+.site-demo .hero-split video{max-width:100%!important;max-height:480px;object-fit:contain;background:#14274e}
+}
+@media (min-width:768px){
+.service-video-grid:not(:has(> div:nth-child(2))){grid-template-columns:minmax(0,400px);justify-content:center}
+.service-video-grid:not(:has(> div:nth-child(2))) video{max-width:400px!important}
+}
+</style>
+</head><body><main class="site-demo isolated-services"><nav class="production-language"><a href="index.html">English</a><a href="es.html">Español</a></nav><div class="topbar">
 <div class="wrap">
 <span>Con cita previa · English / Español</span>
 <span class="sep">·</span>

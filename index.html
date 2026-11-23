@@ -390,4 +390,13 @@ document.querySelectorAll('.ls-menu a[href^="#"]').forEach(b=>b.addEventListener
 .site-demo .service-choice:nth-child(4n+2){background:#eaf4ee}
 .site-demo .service-choice:nth-child(4n+3){background:#f7f2e2}
 .site-demo .service-choice:nth-child(4n+4){background:#e8f0fc}
-</style></body></html>
+</style><link rel="stylesheet" href="https://vdk-viber-runtime-prod.bot.botpress.host/edge/webchat.css" />
+<script src="https://vdk-viber-runtime-prod.bot.botpress.host/edge/webchat.js"></script>
+<script>
+  fetch("https://vdk-viber-runtime-prod.bot.botpress.host/edge/bots/413fcff5-5f36-4d29-8e09-859cf7d4e66c/config")
+    .then((res) => res.json())
+    .then(({ webchat }) =>
+      VdkEdgeWebchat.mount({ ...webchat, mode: "bubble", baseUrl: "https://vdk-viber-runtime-prod.bot.botpress.host", botId: "413fcff5-5f36-4d29-8e09-859cf7d4e66c" })
+    )
+</script>
+</body></html>

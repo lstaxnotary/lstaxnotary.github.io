@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Reserve su cita | L &amp; S Tax and Notary Services</title>
+<style>
+:root{--ink:#16244d;--royal:#1f5fd2;--muted:#62718e;--line:#d8e3f0;--soft:#edf3fa}
+*{box-sizing:border-box;margin:0}
+body{font:15px/1.65 Arial,sans-serif;color:var(--ink);background:#f6f8fb}
+.wrap{max-width:760px;margin:auto;padding:0 20px}
+.topbar{background:var(--soft);font-size:12px;padding:10px 0}
+.topbar .wrap{display:flex;justify-content:space-between;gap:12px}
+.topbar a{color:var(--royal);text-decoration:none}
+header{padding:22px 0 6px}
+h1{font-size:30px;line-height:1.2;letter-spacing:-.02em;margin-bottom:8px}
+.sub{color:var(--muted);margin-bottom:26px}
+.step{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--royal);margin:26px 0 12px}
+.card{background:#fff;border:2px solid var(--line);border-radius:12px;padding:16px 20px;margin-bottom:10px;cursor:pointer;display:block}
+.card:hover{border-color:var(--royal)}
+.card.sel{border-color:var(--royal);background:#e7efff;box-shadow:0 0 0 1px var(--royal)}
+.card .top{display:flex;justify-content:space-between;gap:16px;align-items:baseline;flex-wrap:wrap}
+.card strong{font-size:16px}
+.price{font-weight:700;color:var(--royal);white-space:nowrap}
+.desc{color:var(--muted);font-size:14px;margin-top:4px}
+.panel{display:none}
+.panel.open{display:block}
+.summary{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-bottom:6px}
+.summary h3{font-size:15px;margin-bottom:4px}
+.summary p{font-size:14px;color:var(--muted)}
+.addon{display:flex;gap:12px;align-items:flex-start}
+.addon input{margin-top:5px;min-width:18px;min-height:18px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.chip{border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:10px 14px;font:700 14px Arial;color:var(--ink);cursor:pointer;text-align:center}
+.chip small{display:block;font:400 12px Arial;color:var(--muted)}
+.chip.sel{border-color:var(--royal);background:#f2f7ff;color:var(--royal)}
+.chip.sel small{color:var(--royal)}
+.tz{text-align:center;font-size:12px;color:var(--muted);margin:4px 0 10px}
+label.field{display:block;margin-bottom:14px}
+label.field span{display:block;font-weight:700;margin-bottom:6px;font-size:14px}
+input[type=text]{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font:inherit;color:var(--ink);background:#fff}
+.note-box{background:#fff7e6;border:1px solid #ecd9a8;border-radius:12px;padding:16px 20px;margin:22px 0;color:#4a3a12;font-size:14px}
+.paid-box{background:#e8f5e9;border:1px solid #a5d6a7;border-radius:12px;padding:16px 20px;margin:22px 0;color:#1b4d2e;font-size:15px}
+.dep-pay{display:inline-block;margin-top:10px;padding:12px 22px;background:#1f5fd2;color:#fff;border-radius:8px;font-weight:700;text-decoration:none;font-size:16px}
+.cta{display:block;width:100%;padding:16px;border:0;border-radius:12px;background:var(--royal);color:#fff;font:700 17px Arial;cursor:pointer;margin:8px 0 10px}
+.cta:hover{background:#1a53b8}
+.alt{text-align:center;font-size:14px;color:var(--muted);margin-bottom:8px}
+.alt a{color:var(--royal)}
+.fineprint{font-size:13px;line-height:1.6;color:var(--muted);margin:14px 0 22px}
+.notice{font-size:12px;color:#8a94a6;border-top:1px solid var(--line);padding-top:14px;margin-top:6px}
+footer{padding:10px 0 40px;font-size:12px;color:#8a94a6}
+.err{color:#b3261e;font-size:14px;font-weight:700;display:none;margin:6px 0}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap"><span>L &amp; S Tax and Notary Services · Miami</span><span><a href="https://lstaxnotary.com/es.html">Inicio</a> · <a href="booking.html">English</a></span></div></div>
+<div class="wrap">
+<header>
+<h1>Reserve su cita</h1>
+<p class="sub">Elija lo que necesita, pague el depósito de $25, y luego díganos su fecha y hora preferida. Confirmamos cada cita personalmente.</p>
+</header>
+
+<div id="pre-pay">
+<div class="step">1 · ¿Qué necesita?</div>
+<div id="services"></div>
+<p class="err" id="err1">Elija primero el servicio que necesita.</p>
+
+<div class="panel" id="panel-details">
+<div class="summary" id="summary"></div>
+<div class="step">2 · Agregue a su cita</div>
+<div id="addons"></div>
+
+<div class="step">3 · Pague su depósito de $25</div>
+<div class="note-box"><strong>Depósito de reserva: $25</strong>, acreditado a su total. Los clientes nuevos reciben un 5% de descuento en el total final de servicios notariales. El depósito no es reembolsable; si no podemos cubrir su horario solicitado, encontraremos a alguien que lo cubra o moveremos la fecha con usted. Aceptamos Apple Pay, tarjeta, Cash App Pay, Klarna y banco. Justo después del pago, usted nos dirá su fecha y hora preferida aquí. Al pagar el depósito, usted permite que L &amp; S cargue el saldo restante al mismo método de pago una vez completado su servicio.<br><a class="dep-pay" id="pay-btn" href="https://buy.stripe.com/fZu7sL9OFfh229MbTngA800">Pague el depósito de $25</a></div>
+</div>
+</div>
+
+<div class="panel" id="panel-paid">
+<div class="paid-box"><strong>Depósito pagado.</strong> Ahora díganos su fecha y hora preferida y envíenos su solicitud. Confirmamos la hora exacta con usted personalmente.</div>
+<div class="step">4 · Fecha y hora</div>
+<div class="chips" id="days"></div>
+<div class="chips" id="times"></div>
+<p class="tz">Horarios en hora del Este (GMT-05:00). Su selección es una solicitud; confirmamos la hora exacta con usted.</p>
+<div class="step">5 · Envíe su solicitud</div>
+<label class="field"><span>Su nombre</span><input type="text" id="f-name" autocomplete="name"></label>
+<label class="field"><span>Correo que usó en el pago</span><input type="email" id="f-email" autocomplete="email"></label>
+<button class="cta" id="send">Enviar mi solicitud de cita por WhatsApp</button>
+<p class="alt">¿Prefiere correo? Escriba a <a href="mailto:info@lstaxnotary.com">info@lstaxnotary.com</a> con los mismos datos.</p>
+<p class="fineprint">Solo con cita. Los horarios solicitados son solicitudes, nunca horarios garantizados. Haremos lo posible por ajustarnos a su horario preferido y lo confirmaremos personalmente. Las respuestas pueden tomar tiempo. Si no podemos ofrecerle el horario solicitado, encontraremos a alguien que lo cubra o moveremos la fecha con usted. El depósito nunca es reembolsable. Verificamos el pago de su depósito antes de confirmar. No envíe documentos ni datos sensibles por WhatsApp.</p>
+</div>
+
+<p class="fineprint" id="pre-fineprint">Solo con cita. No envíe documentos ni datos sensibles por WhatsApp.</p>
+
+<p class="notice">I AM NOT AN ATTORNEY LICENSED TO PRACTICE LAW IN THE STATE OF FLORIDA, AND I MAY NOT GIVE LEGAL ADVICE OR ACCEPT FEES FOR LEGAL ADVICE. I AM NOT ACCREDITED TO REPRESENT YOU IN IMMIGRATION MATTERS.</p>
+<p class="notice">NO SOY UN ABOGADO LICENCIADO PARA EJERCER LA ABOGACÍA EN EL ESTADO DE FLORIDA, Y NO PUEDO DAR ASESORAMIENTO LEGAL NI ACEPTAR HONORARIOS POR ASESORAMIENTO LEGAL. NO ESTOY ACREDITADO PARA REPRESENTARLO EN ASUNTOS DE INMIGRACIÓN.</p>
+<footer>© 2026 L &amp; S Tax and Notary Services · Miami, Florida</footer>
+</div>
+<script>
+const SERVICES=[
+ {id:'mobile',name:'Visita notarial móvil',price:'viaje desde $35 + $10 por notarización',
+  short:'Vamos a usted en Miami-Dade, Broward o West Palm Beach.',
+  base:'Tarifa base: viaje a su ubicación en Miami-Dade, Broward o West Palm Beach, desde $35, más $10 por notarización. Usted trae los documentos y su identificación; nosotros nos encargamos de la firma y la notarización.',
+  addons:[['w1','1 testigo, proporcionado por nosotros ($35)'],['w2','2 testigos, proporcionados por nosotros ($70)'],['extra','Notarizaciones adicionales ($10 cada una, unos 10 minutos cada una)'],['signer','Firmante adicional ($10)'],['ps','Impresión y escaneo ($60, incluye 10 páginas; $0.50 por página adicional, unos 10 minutos)'],['rush','Servicio urgente / el mismo día (desde $150)']]},
+ {id:'ron',name:'Notarización remota en línea',price:'desde $45 el primer acta',
+  short:'Notarización por video, desde cualquier lugar.',
+  base:'Tarifa base: desde $45 por la sesión en línea por video y la primera notarización. Notarizaciones adicionales desde $20 cada una; firmantes internacionales desde $75.',
+  addons:[['extra','Notarizaciones adicionales (desde $20 cada una)'],['intl','Firmante internacional (desde $75)'],['signer','Firmante adicional ($25)'],['rush','Servicio urgente / el mismo día (desde $150)']]},
+ {id:'package',name:'Paquete de firma de documentos',price:'$350 por paquete',
+  short:'Testamentos, poderes notariales, escrituras quit claim y fideicomisos.',
+  base:'El paquete de $350 incluye el viaje en Miami-Dade, Broward y West Palm Beach, la impresión desde su archivo, la firma y las notarizaciones, el escaneo y la entrega de los documentos terminados.',
+  addons:[['w1','1 testigo, proporcionado por nosotros ($35)'],['w2','2 testigos, proporcionados por nosotros ($70)'],['rush','Servicio urgente / el mismo día (desde $150)']]},
+ {id:'immigration',name:'Preparación de formularios de inmigración',price:'$200',
+  short:'Ayuda para completar los formularios de inmigración que usted elija.',
+  base:'Le ayudamos a completar los formularios de inmigración que usted elija, con la información que usted nos proporciona. No somos abogados: no podemos elegir sus formularios, darle asesoramiento legal ni representarlo ante ninguna agencia. El precio de $200 es fijo; no aplican descuentos.',
+  addons:[]},
+ {id:'apostille',name:'Tramitación de apostillas',price:'desde $150',
+  short:'Apostillas para documentos que van al extranjero.',
+  base:'Tramitamos la apostilla de sus documentos. El costo final depende del tipo de documento y del país de destino.',
+  addons:[['rush','Tramitación urgente (desde $150)']]},
+ {id:'translation',name:'Traducción de documentos',price:'desde $45',
+  short:'Traducción entre inglés y español.',
+  base:'Traducción de sus documentos entre inglés y español. El costo final depende de la extensión y el tipo de documento.',
+  addons:[['rush','Entrega urgente (desde $150)']]},
+ {id:'facility',name:'Visita a hospital o centro correccional',price:'consulte precios',
+  short:'Notarizaciones en hospitales y centros correccionales.',
+  base:'Las notarizaciones en hospitales y centros correccionales se coordinan caso por caso. Cuéntenos el lugar y la situación en su solicitud y le daremos un precio.',
+  addons:[]},
+ {id:'wedding',name:'Oficiante de bodas',price:'consulte precios',
+  short:'Servicios de oficiante para ceremonias de boda.',
+  base:'Servicios de oficiante para ceremonias de boda. Cuéntenos sobre su ceremonia, la fecha y el lugar en su solicitud y le daremos un precio.',
+  addons:[]},
+ {id:'tax-personal',name:'Declaración de impuestos personal',price:'$200',
+  short:'Preparación de la declaración de impuestos individual.',
+  base:'Preparación de la declaración de impuestos individual federal y estatal, presentada electrónicamente. Apoyo todo el año, no solo en temporada de impuestos.',
+  addons:[]},
+ {id:'tax-business',name:'Declaración de impuestos corporativa / de negocio',price:'$550',
+  short:'Preparación de declaraciones de impuestos corporativas y de negocio.',
+  base:'Preparación de la declaración de impuestos corporativa o de negocio, con presentación electrónica federal y estatal. Apoyo todo el año, no solo en temporada de impuestos.',
+  addons:[]},
+ {id:'llc',name:'Trámites de LLC en Florida',price:'$300 en total',
+  short:'Ayuda clerical con presentaciones de negocios en Florida.',
+  base:'Trámites de LLC en Florida: $300 en total, incluyendo los cargos de presentación del estado. Ayuda clerical con el papeleo usando su información escrita y sus decisiones, en los formularios que usted elija.',
+  addons:[]},
+ {id:'website',name:'Creación de sitio web',price:'$599',
+  short:'Un sitio web profesional para su pequeño negocio.',
+  base:'Un sitio web profesional de una o varias páginas para su pequeño negocio: sus servicios, la información del negocio, botones de llamada y WhatsApp. El dominio, el hospedaje y el correo empresarial se facturan por separado por sus proveedores. Acordamos el alcance y el precio por escrito antes de comenzar cualquier trabajo.',
+  addons:[]},
+ {id:'bundle',name:'Paquete de inicio de negocio',price:'$999.99 una vez',
+  short:'LLC + sitio web + logotipo + SEO, precio único.',
+  base:'Incluye trámites de LLC en Florida y los cargos de presentación del estado requeridos, un sitio web bilingüe con videos, un logotipo, optimización para motores de búsqueda (SEO), configuración de listados de negocios, y los costos iniciales de dominio y correo empresarial. Las cuentas se crean a su nombre. Las suscripciones y renovaciones continuas son su responsabilidad.',
+  addons:[]}
+];
+const TIMES=['9:00 AM','10:00 AM','11:00 AM','12:00 PM','1:00 PM','2:00 PM','3:00 PM','4:00 PM','5:00 PM','6:00 PM'];
+let selSvc=null,selDay=null,selTime=null;
+const $=id=>document.getElementById(id);
+const PAID=new URLSearchParams(location.search).get('paid')==='1';
+
+const svcBox=$('services');
+SERVICES.forEach(s=>{
+ const el=document.createElement('label');
+ el.className='card';
+ el.dataset.svcId=s.id;
+ el.innerHTML='<span class="top"><strong>'+s.name+'</strong><span class="price">'+s.price+'</span></span><span class="desc">'+s.short+'</span>';
+ el.addEventListener('click',()=>{
+  svcBox.querySelectorAll('.card').forEach(x=>x.classList.remove('sel'));
+  el.classList.add('sel');selSvc=s;$('err1').style.display='none';
+  $('summary').innerHTML='<h3>'+s.name+' · '+s.price+'</h3><p>'+s.base+'</p>';
+  const ab=$('addons');
+  if(s.addons.length){
+   ab.innerHTML='';
+   s.addons.forEach(([id,label])=>{
+    const a=document.createElement('label');a.className='card addon';
+    a.innerHTML='<input type="checkbox" value="'+label+'" data-add-id="'+id+'"><span>'+label+'</span>';
+    ab.appendChild(a);
+   });
+  }else{
+   ab.innerHTML='<p class="desc" style="margin-bottom:6px">Este servicio no tiene adicionales. Todo lo anterior está incluido en el precio indicado.</p>';
+  }
+  $('panel-details').classList.add('open');
+  $('panel-details').scrollIntoView({behavior:'smooth',block:'start'});
+ });
+ svcBox.appendChild(el);
+});
+
+$('pay-btn').addEventListener('click',()=>{
+ try{
+  localStorage.setItem('lsBook',JSON.stringify({svc:selSvc?selSvc.id:null,adds:[...document.querySelectorAll('#addons input:checked')].map(a=>a.value),lang:'es'}));
+ }catch(e){}
+});
+
+const daysBox=$('days');
+const wd=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+const mo=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+for(let i=0;i<7;i++){
+ const d=new Date();d.setDate(d.getDate()+i);
+ const top=i===0?'Hoy':(i===1?'Mañana':wd[d.getDay()]);
+ const b=document.createElement('button');b.className='chip';b.type='button';
+ b.innerHTML='<small>'+top+'</small>'+mo[d.getMonth()]+' '+d.getDate();
+ b.dataset.val=wd[d.getDay()]+', '+d.getDate()+' de '+mo[d.getMonth()]+' de '+d.getFullYear();
+ b.addEventListener('click',()=>{daysBox.querySelectorAll('.chip').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');selDay=b.dataset.val;});
+ daysBox.appendChild(b);
+}
+const timesBox=$('times');
+TIMES.forEach(t=>{
+ const b=document.createElement('button');b.className='chip';b.type='button';b.textContent=t;
+ b.addEventListener('click',()=>{timesBox.querySelectorAll('.chip').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');selTime=t;});
+ timesBox.appendChild(b);
+});
+
+let savedAdds=[];
+function showPaid(restore){
+ if(restore){
+  try{
+   const saved=JSON.parse(localStorage.getItem('lsBook')||'null');
+   if(saved&&saved.svc){selSvc=SERVICES.find(s=>s.id===saved.svc)||null;}
+   if(saved&&saved.adds){savedAdds=saved.adds;}
+  }catch(e){}
+ }
+ $('pre-pay').style.display='none';
+ $('pre-fineprint').style.display='none';
+ $('panel-paid').classList.add('open');
+ window.scrollTo(0,0);
+}
+if(PAID){showPaid(true);}
+
+$('send').addEventListener('click',()=>{
+ const lines=[
+  'Hola L & S, pagué el depósito de $25 y quisiera programar mi cita.',
+  selSvc?'Servicio: '+selSvc.name+' ('+selSvc.price+')':null,
+  savedAdds.length?'Adicionales: '+savedAdds.join(', '):null,
+  selDay?'Fecha preferida: '+selDay:null,
+  selTime?'Hora preferida: '+selTime+' hora del Este':null,
+  $('f-name').value?'Nombre: '+$('f-name').value:null,
+  $('f-email').value?'Correo usado en el pago: '+$('f-email').value:null
+ ].filter(Boolean);
+ window.open('https://wa.me/13057078504?text='+encodeURIComponent(lines.join('\n')),'_blank');
+});
+</script>
+<script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2026/11/23/05/20261123055533-CS10PQS1.js" defer></script>
+</body>
+</html>

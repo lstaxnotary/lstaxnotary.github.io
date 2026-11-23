@@ -78,7 +78,7 @@ footer{padding:10px 0 40px;font-size:12px;color:#8a94a6}
 <div class="panel" id="panel-send">
 <div class="step">4 · Send your request</div>
 <label class="field"><span>Your name</span><input type="text" id="f-name" autocomplete="name"></label>
-<div class="note-box"><strong>Booking deposit: $25</strong>, credited toward your total and non-refundable, since that time is held for you. First-time clients get 5% off the final total. The deposit is paid only after we confirm your appointment.</div>
+<div class="note-box"><strong>Booking deposit: $25</strong>, credited toward your total and non-refundable, since that time is held for you. First-time clients get 5% off the final total on notary services. The deposit is paid only after we confirm your appointment.</div>
 <button class="cta" id="send">Request appointment on WhatsApp</button>
 <p class="alt">Prefer email? Write to <a href="mailto:info@lstaxnotary.com">info@lstaxnotary.com</a> with the same details.</p>
 <p class="fineprint">By appointment. An inquiry does not confirm an appointment. Replies may take time. Our team will confirm whether your requested time is available before any payment. Do not send documents or sensitive details through WhatsApp.</p>
@@ -93,18 +93,18 @@ const SERVICES=[
  {id:'mobile',name:'Mobile notary visit',price:'travel from $35 + $10 per notarization',
   short:'We come to you in Miami-Dade, Broward or West Palm Beach.',
   base:'Base rate: travel to you in Miami-Dade, Broward or West Palm Beach, from $35, plus $10 per notarization. You bring the documents and your ID; we handle the signing and notarization.',
-  addons:[['extra','Additional notarizations ($10 each)'],['w1','1 witness, provided by us ($35)'],['w2','2 witnesses, provided by us ($70)'],['ps','Printing and scanning ($60)'],['rush','Rush / same-day (from $150)']]},
+  addons:[['w1','1 witness, provided by us ($35)'],['w2','2 witnesses, provided by us ($70)'],['extra','Additional notarizations ($10 each, about 10 minutes each)'],['signer','Additional signer ($10)'],['ps','Printing and scanning ($60, includes 10 pages; $0.50 per additional page, about 10 minutes)'],['rush','Rush / same-day (from $150)']]},
  {id:'ron',name:'Remote online notarization',price:'from $45 first act',
   short:'Notarized by video, from anywhere.',
   base:'Base rate: from $45 for the online video session and first notarization. Additional notarizations from $20 each; international signers from $75.',
-  addons:[['extra','Additional notarizations (from $20 each)'],['intl','International signer (from $75)'],['rush','Rush / same-day (from $150)']]},
+  addons:[['extra','Additional notarizations (from $20 each)'],['intl','International signer (from $75)'],['signer','Additional signer ($25)'],['rush','Rush / same-day (from $150)']]},
  {id:'package',name:'Document signing package',price:'$350 per package',
   short:'Wills, powers of attorney, quit claim deeds and trusts.',
   base:'The $350 package includes travel in Miami-Dade, Broward and West Palm Beach, printing from your file, the signing and notarizations, scanning, and delivery of the finished documents.',
   addons:[['w1','1 witness, provided by us ($35)'],['w2','2 witnesses, provided by us ($70)'],['rush','Rush / same-day (from $150)']]},
  {id:'immigration',name:'Immigration form preparation',price:'$200',
   short:'Help completing the immigration forms you choose.',
-  base:'We help you complete the immigration forms you choose, using the information you provide. We are not attorneys: we cannot choose your forms, give legal advice, or represent you before any agency.',
+  base:'We help you complete the immigration forms you choose, using the information you provide. We are not attorneys: we cannot choose your forms, give legal advice, or represent you before any agency. The $200 price is flat; no discounts apply.',
   addons:[]},
  {id:'apostille',name:'Apostille processing',price:'from $150',
   short:'Apostilles for documents headed abroad.',

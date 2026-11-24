@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Programe su conversación gratis sobre seguros de vida | L &amp; S Tax and Notary Services</title>
+<style>
+:root{--ink:#16244d;--royal:#1f5fd2;--muted:#62718e;--line:#d8e3f0;--soft:#edf3fa}
+*{box-sizing:border-box;margin:0}
+body{font:15px/1.65 Arial,sans-serif;color:var(--ink);background:#f6f8fb}
+.wrap{max-width:760px;margin:auto;padding:0 20px}
+.topbar{background:var(--soft);font-size:12px;padding:10px 0}
+.topbar .wrap{display:flex;justify-content:space-between;gap:12px}
+.topbar a{color:var(--royal);text-decoration:none}
+header{padding:22px 0 6px}
+h1{font-size:30px;line-height:1.2;letter-spacing:-.02em;margin-bottom:8px}
+.sub{color:var(--muted);margin-bottom:26px}
+.step{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--royal);margin:26px 0 12px}
+.card{background:#fff;border:2px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:10px;cursor:pointer;display:block}
+.card:hover{border-color:var(--royal)}
+.card.sel{border-color:var(--royal);background:#e7efff;box-shadow:0 0 0 1px var(--royal)}
+.card strong{font-size:15px}
+.card .desc{color:var(--muted);font-size:14px;margin-top:2px;display:block}
+.panel{display:none}
+.panel.open{display:block}
+.summary{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-bottom:6px}
+.summary h3{font-size:15px;margin-bottom:4px}
+.summary p{font-size:14px;color:var(--muted)}
+.cal{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;max-width:420px}
+.cal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.cal-head strong{font-size:15px}
+.cal-head button{border:1.5px solid var(--line);background:#fff;border-radius:8px;width:36px;height:36px;font:700 16px Arial;color:var(--royal);cursor:pointer}
+.cal-head button:disabled{opacity:.3;cursor:default}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}
+.cal-grid .dow{font-size:11px;font-weight:700;color:var(--muted);padding:4px 0}
+.cal-grid button.day{border:0;background:#e7efff;color:var(--royal);border-radius:50%;aspect-ratio:1;font:700 14px Arial;cursor:pointer}
+.cal-grid button.day:hover{background:var(--royal);color:#fff}
+.cal-grid button.day.sel{background:var(--royal);color:#fff}
+.cal-grid button.day.off{background:transparent;color:#c3ccd9;cursor:default;font-weight:400}
+.cal-grid button.day.full{background:#d6e4ff}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.chip{border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:10px 14px;font:700 14px Arial;color:var(--ink);cursor:pointer;text-align:center}
+.chip small{display:block;font:400 12px Arial;color:var(--muted)}
+.chip.sel{border-color:var(--royal);background:#f2f7ff;color:var(--royal)}
+.chip.sel small{color:var(--royal)}
+.chip:disabled{opacity:.4;cursor:default}
+.tz{font-size:12px;color:var(--muted);margin:4px 0 10px}
+label.field{display:block;margin-bottom:14px}
+label.field span{display:block;font-weight:700;margin-bottom:6px;font-size:14px}
+input[type=text],input[type=email],input[type=tel],textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font:inherit;color:var(--ink);background:#fff}
+textarea{min-height:80px;resize:vertical}
+.cta{display:block;width:100%;padding:16px;border:0;border-radius:12px;background:var(--royal);color:#fff;font:700 17px Arial;cursor:pointer;margin:8px 0 10px;text-align:center;text-decoration:none}
+.cta:hover{background:#1a53b8}
+.cta.secondary{background:#fff;color:var(--royal);border:2px solid var(--royal)}
+.alt{text-align:center;font-size:14px;color:var(--muted);margin-bottom:8px}
+.alt a{color:var(--royal)}
+.done-box{background:#e8f5e9;border:1px solid #a5d6a7;border-radius:12px;padding:18px 20px;margin:22px 0;color:#1b4d2e;font-size:15px}
+.done-box .cta{margin-top:14px}
+.fineprint{font-size:13px;line-height:1.6;color:var(--muted);margin:14px 0 22px}
+footer{padding:10px 0 40px;font-size:12px;color:#8a94a6}
+.err{color:#b3261e;font-size:14px;font-weight:700;display:none;margin:6px 0}
+@media(max-width:520px){h1{font-size:25px}.cal{max-width:none}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap"><span>L &amp; S Tax and Notary Services · Miami</span><span><a href="https://lstaxnotary.com/es.html">Inicio</a> · <a href="life-session.html">English</a></span></div></div>
+<div class="wrap">
+<header>
+<h1>Programe su conversación gratis sobre seguros de vida</h1>
+<p class="sub">45 minutos, gratis y sin presión, en inglés o español. Elija el día y la hora que le convengan. Confirmamos cada cita personalmente.</p>
+</header>
+
+<div class="step">1 · ¿De qué le gustaría hablar?</div>
+<div id="topics"></div>
+
+<div class="panel" id="panel-rest">
+<div class="step">2 · Elija un día</div>
+<div class="cal">
+<div class="cal-head"><button type="button" id="cal-prev" aria-label="Mes anterior">‹</button><strong id="cal-title"></strong><button type="button" id="cal-next" aria-label="Mes siguiente">›</button></div>
+<div class="cal-grid" id="cal-grid"></div>
+</div>
+<p class="tz">Lunes y martes: de mañana a noche, en persona o en línea. Otros días: por la mañana, solo en línea.</p>
+
+<div class="step">3 · Elija una hora</div>
+<div class="chips" id="times"></div>
+<p class="tz" id="time-note"></p>
+<p class="tz">Todas las horas son hora del Este (Miami). Cada sesión dura 45 minutos.</p>
+
+<div class="step">4 · ¿Cómo prefiere la cita?</div>
+<div class="chips" id="modes"></div>
+
+<div class="step">5 · Sus datos</div>
+<label class="field"><span>Su nombre</span><input type="text" id="f-name" autocomplete="name"></label>
+<label class="field"><span>Número de celular</span><input type="tel" id="f-phone" autocomplete="tel"></label>
+<label class="field"><span>Correo electrónico (opcional)</span><input type="email" id="f-email" autocomplete="email"></label>
+<div class="step" style="margin-top:6px">¿Cómo prefiere que le contactemos?</div>
+<div class="chips" id="reach"></div>
+<label class="field"><span>Algo que debamos saber (opcional)</span><textarea id="f-notes" placeholder="Por favor no incluya números de cuenta, números de Seguro Social ni otros datos sensibles."></textarea></label>
+
+<div class="step">6 · Envíe su solicitud</div>
+<div class="summary" id="review"></div>
+<p class="err" id="err1">Por favor escriba su nombre y número de celular, y elija un día, una hora y una forma de cita.</p>
+<button class="cta" id="send-wa">Enviar mi solicitud por WhatsApp</button>
+<button class="cta secondary" id="send-email">Enviarla por correo electrónico</button>
+
+<div class="done-box panel" id="panel-done">
+<strong>Su solicitud está en camino.</strong> Confirmamos cada cita personalmente, normalmente por texto o WhatsApp. Mientras tanto, agregue la sesión a su calendario para recibir un recordatorio:
+<a class="cta" id="gcal" href="#" target="_blank" rel="noopener">Agregar a Google Calendar</a>
+<button class="cta secondary" id="ics">Descargar para Apple u Outlook (.ics)</button>
+</div>
+</div>
+
+<p class="fineprint">Solo con cita. Los horarios solicitados son solicitudes, nunca citas garantizadas. Luis confirma cada cita personalmente. Las respuestas pueden tomar tiempo. Esta conversación es educativa: no es una cotización ni una oferta de cobertura, y no se toma ninguna solicitud de seguro en esta llamada. Los costos, términos y condiciones varían según la póliza y la aseguradora. No envíe documentos ni datos sensibles por WhatsApp.</p>
+<footer>© 2026 L &amp; S Tax and Notary Services · Miami, Florida</footer>
+</div>
+<script>
+const TOPICS=[
+ {id:'review',name:'Revisión de cobertura',desc:'Revise con nosotros una póliza que ya tiene.'},
+ {id:'new',name:'Cobertura nueva para mi familia',desc:'Término, vida entera y metas de legado, en palabras sencillas.'},
+ {id:'retirement',name:'Ingresos para el retiro',desc:'Anualidades fijas y estrategias de ingresos.'},
+ {id:'business',name:'Protección para su negocio',desc:'Cobertura de persona clave y de compra-venta.'},
+ {id:'questions',name:'Solo preguntas por ahora',desc:'Aún no está seguro. No hay problema.'}
+];
+const MODES=[
+ {id:'phone',name:'Llamada telefónica'},
+ {id:'video',name:'Videollamada por WhatsApp'},
+ {id:'person',name:'En persona',note:'lunes y martes'}
+];
+const REACH=['WhatsApp','Mensaje de texto','Llamada','Correo electrónico'];
+const MO=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+const WD=['dom','lun','mar','mié','jue','vie','sáb'];
+const WD_FULL=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+const SLOTS_MT=['8:00 AM','9:00 AM','10:00 AM','11:00 AM','12:00 PM','1:00 PM','2:00 PM','3:00 PM','4:00 PM','5:00 PM','6:00 PM','7:00 PM'];
+const SLOTS_AM=['7:00 AM','8:00 AM','9:00 AM','10:00 AM','11:00 AM'];
+const $=id=>document.getElementById(id);
+let selTopic=null,selDate=null,selTime=null,selMode=null,selReach=null,calMonth=null;
+
+const tp=$('topics');
+TOPICS.forEach(t=>{
+ const el=document.createElement('label');el.className='card';
+ el.innerHTML='<strong>'+t.name+'</strong><span class="desc">'+t.desc+'</span>';
+ el.addEventListener('click',()=>{
+  tp.querySelectorAll('.card').forEach(x=>x.classList.remove('sel'));
+  el.classList.add('sel');selTopic=t;
+  $('panel-rest').classList.add('open');
+  if(calMonth===null){const n=new Date();calMonth=new Date(n.getFullYear(),n.getMonth(),1);renderCal();renderTimes();renderModes();renderReview();}
+  $('panel-rest').scrollIntoView({behavior:'smooth',block:'start'});
+ });
+ tp.appendChild(el);
+});
+
+function renderCal(){
+ const g=$('cal-grid');g.innerHTML='';
+ const today=new Date();today.setHours(0,0,0,0);
+ const maxMonth=new Date(today.getFullYear(),today.getMonth()+1,1);
+ $('cal-title').textContent=MO[calMonth.getMonth()]+' '+calMonth.getFullYear();
+ $('cal-prev').disabled=calMonth<=new Date(today.getFullYear(),today.getMonth(),1);
+ $('cal-next').disabled=calMonth>=maxMonth;
+ WD.forEach(w=>{const d=document.createElement('div');d.className='dow';d.textContent=w;g.appendChild(d);});
+ const first=new Date(calMonth);const lead=first.getDay();
+ for(let i=0;i<lead;i++)g.appendChild(document.createElement('div'));
+ const dim=new Date(calMonth.getFullYear(),calMonth.getMonth()+1,0).getDate();
+ for(let d=1;d<=dim;d++){
+  const dt=new Date(calMonth.getFullYear(),calMonth.getMonth(),d);
+  const b=document.createElement('button');b.type='button';b.className='day';b.textContent=d;
+  if(dt<today){b.classList.add('off');b.disabled=true;}
+  else{
+   if(dt.getDay()===1||dt.getDay()===2)b.classList.add('full');
+   if(selDate&&dt.getTime()===selDate.getTime())b.classList.add('sel');
+   b.addEventListener('click',()=>{selDate=dt;selTime=null;renderCal();renderTimes();renderModes();renderReview();});
+  }
+  g.appendChild(b);
+ }
+}
+$('cal-prev').addEventListener('click',()=>{calMonth=new Date(calMonth.getFullYear(),calMonth.getMonth()-1,1);renderCal();});
+$('cal-next').addEventListener('click',()=>{calMonth=new Date(calMonth.getFullYear(),calMonth.getMonth()+1,1);renderCal();});
+
+function to24(label){
+ const m=/(\d+):00 (AM|PM)/.exec(label);let h=+m[1];
+ if(m[2]==='PM'&&h!==12)h+=12;if(m[2]==='AM'&&h===12)h=0;return h;
+}
+function renderTimes(){
+ const box=$('times');box.innerHTML='';selTime=null;
+ const note=$('time-note');
+ if(!selDate){note.textContent='Elija un día primero.';return;}
+ const mt=selDate.getDay()===1||selDate.getDay()===2;
+ note.textContent=mt?'':'Citas solo en línea este día.';
+ const now=new Date();
+ const isToday=selDate.toDateString()===now.toDateString();
+ (mt?SLOTS_MT:SLOTS_AM).forEach(t=>{
+  if(isToday&&to24(t)*60<=now.getHours()*60+now.getMinutes()+120)return;
+  const b=document.createElement('button');b.className='chip';b.type='button';b.textContent=t;
+  b.addEventListener('click',()=>{box.querySelectorAll('.chip').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');selTime=t;renderReview();});
+  box.appendChild(b);
+ });
+ if(!box.children.length)note.textContent='Ya no quedan horas hoy. Elija otro día.';
+}
+function renderModes(){
+ const box=$('modes');box.innerHTML='';
+ const mt=selDate&&(selDate.getDay()===1||selDate.getDay()===2);
+ MODES.forEach(mo=>{
+  const b=document.createElement('button');b.className='chip';b.type='button';
+  b.innerHTML=mo.name+(mo.note?'<small>'+mo.note+'</small>':'');
+  if(mo.id==='person'&&selDate&&!mt)b.disabled=true;
+  if(selMode===mo.id&&b.disabled)selMode=null;
+  if(selMode===mo.id)b.classList.add('sel');
+  b.addEventListener('click',()=>{selMode=mo.id;box.querySelectorAll('.chip').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');renderReview();});
+  box.appendChild(b);
+ });
+ const rx=$('reach');rx.innerHTML='';
+ REACH.forEach(r=>{
+  const b=document.createElement('button');b.className='chip';b.type='button';b.textContent=r;
+  if(selReach===r)b.classList.add('sel');
+  b.addEventListener('click',()=>{selReach=r;rx.querySelectorAll('.chip').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');renderReview();});
+  rx.appendChild(b);
+ });
+}
+function dateLabel(){return selDate?WD_FULL[selDate.getDay()]+', '+selDate.getDate()+' de '+MO[selDate.getMonth()]+' de '+selDate.getFullYear():null;}
+function requestLines(){
+ const modeName=selMode?(MODES.find(m=>m.id===selMode)||{}).name:null;
+ return [
+  'Hola L & S, quisiera programar una conversación gratis sobre seguros de vida (45 minutos).',
+  selTopic?'Tema: '+selTopic.name:null,
+  selDate?'Fecha preferida: '+dateLabel():null,
+  selTime?'Hora preferida: '+selTime+' hora del Este':null,
+  modeName?'Cita: '+modeName:null,
+  $('f-name').value?'Nombre: '+$('f-name').value:null,
+  $('f-phone').value?'Celular: '+$('f-phone').value:null,
+  $('f-email').value?'Correo: '+$('f-email').value:null,
+  selReach?'Mejor forma de contacto: '+selReach:null,
+  $('f-notes').value?'Nota: '+$('f-notes').value:null
+ ].filter(Boolean);
+}
+function renderReview(){
+ const r=$('review');
+ const rows=[
+  selTopic?selTopic.name:null,
+  selDate?dateLabel():null,
+  selTime?selTime+' hora del Este, 45 minutos':null,
+  selMode?(MODES.find(m=>m.id===selMode)||{}).name:null
+ ].filter(Boolean);
+ r.innerHTML=rows.length?'<h3>'+rows.join(' · ')+'</h3><p>Puede cambiar cualquier paso antes de enviar.</p>':'<h3>Su sesión</h3><p>Elija un tema, un día, una hora y una forma de cita.</p>';
+}
+function valid(){return selTopic&&selDate&&selTime&&selMode&&$('f-name').value.trim()&&$('f-phone').value.trim();}
+function calDates(){
+ const h=to24(selTime);
+ const p=n=>String(n).padStart(2,'0');
+ const s=selDate.getFullYear()+p(selDate.getMonth()+1)+p(selDate.getDate())+'T'+p(h)+'0000';
+ const e=selDate.getFullYear()+p(selDate.getMonth()+1)+p(selDate.getDate())+'T'+p(h)+'4500';
+ return {s:s,e:e};
+}
+function sendDone(){
+ if(!valid()){$('err1').style.display='block';return;}
+ $('err1').style.display='none';
+ const d=calDates();
+ const details=requestLines().join('\n');
+ $('gcal').href='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent('Conversación sobre seguros de vida con L & S')+'&dates='+d.s+'/'+d.e+'&ctz=America/New_York&details='+encodeURIComponent(details);
+ $('panel-done').classList.add('open');
+ $('panel-done').scrollIntoView({behavior:'smooth',block:'start'});
+}
+$('send-wa').addEventListener('click',()=>{
+ if(!valid()){$('err1').style.display='block';return;}
+ window.open('https://wa.me/13057078504?text='+encodeURIComponent(requestLines().join('\n')),'_blank');
+ sendDone();
+});
+$('send-email').addEventListener('click',()=>{
+ if(!valid()){$('err1').style.display='block';return;}
+ const subj='Solicitud de sesión de seguros de vida - '+$('f-name').value.trim()+' - '+dateLabel()+' '+selTime+' ET';
+ location.href='mailto:info@lstaxnotary.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(requestLines().join('\n'));
+ sendDone();
+});
+$('ics').addEventListener('click',()=>{
+ if(!valid())return;
+ const d=calDates();
+ const body=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//L and S//Life Session//ES','BEGIN:VEVENT',
+ 'UID:'+Date.now()+'@lstaxnotary.com','DTSTAMP:'+new Date().toISOString().replace(/[-:.]/g,'').slice(0,15)+'Z',
+ 'DTSTART;TZID=America/New_York:'+d.s,'DTEND;TZID=America/New_York:'+d.e,
+ 'SUMMARY:Conversación sobre seguros de vida con L & S',
+ 'DESCRIPTION:'+requestLines().join('\\n').replace(/,/g,'\\,'),
+ 'BEGIN:VALARM','TRIGGER:-P1D','ACTION:DISPLAY','DESCRIPTION:Recordatorio','END:VALARM',
+ 'BEGIN:VALARM','TRIGGER:-PT1H','ACTION:DISPLAY','DESCRIPTION:Recordatorio','END:VALARM',
+ 'END:VEVENT','END:VCALENDAR'].join('\r\n');
+ const a=document.createElement('a');
+ a.href=URL.createObjectURL(new Blob([body],{type:'text/calendar'}));
+ a.download='sesion-seguros-de-vida.ics';a.click();
+});
+['f-name','f-phone','f-email','f-notes'].forEach(id=>$(id).addEventListener('input',renderReview));
+</script>
+</body>
+</html>

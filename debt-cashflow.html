@@ -550,7 +550,7 @@ header{background:#fdfaf3}
 .lang-btn{float:right;background:none;border:1.5px solid #ecc95f;color:#ecc95f;border-radius:999px;padding:6px 14px;font-weight:700;cursor:pointer}
 @media(max-width:640px){.exp-grid{grid-template-columns:1fr}}
 </style>
-<script>if(/[?&]embed=1/.test(location.search)){document.write("<style>header,footer,.fna-hero,.topbar{display:none!important}body{background:#fff}</style>");}</script></head>
+</head>
 <body>
 <header><div class="wrap"><div class="brand"><img class="brand-logo" src="/logo-badge.svg" alt="L&S Tax and Notary Services logo"></div>
 <a class="header-cta" href="index.html#book" id="hcta">Book My Free Analysis</a></div></header>
@@ -580,7 +580,7 @@ header{background:#fdfaf3}
 <div class="fld"><label id="l-extra" for="extra"></label><input id="extra" type="number" min="0" step="any" inputmode="decimal"><div class="hint" id="h-extra"></div></div>
 <div class="fld"><label id="l-sav" for="sav"></label><input id="sav" type="number" min="0" step="any" inputmode="decimal" value="0"></div>
 <div class="fld"><label id="l-dep" for="dep"></label><input id="dep" type="number" min="0" max="20" step="1" inputmode="numeric" value="0"></div>
-<div class="fld"><label id="l-cov" for="cov"></label><input id="cov" type="number" min="0" step="any" inputmode="decimal" value="0"></div><div class="fld"><label id="l-mort" for="mort"></label><input id="mort" type="number" min="0" step="any" inputmode="decimal"></div><div class="fld"><label id="l-rent" for="rent"></label><input id="rent" type="number" min="0" step="any" inputmode="decimal"><div class="hint" id="h-rent"></div></div><div class="fld"><label id="l-kids" for="kids"></label><input id="kids" type="number" min="0" step="1" inputmode="numeric" max="20"></div><div class="fld"><label id="l-coll" for="coll"></label><input id="coll" type="number" min="0" step="any" inputmode="decimal"></div><div class="fld"><label id="l-leg" for="leg"></label><input id="leg" type="number" min="0" step="any" inputmode="decimal"></div>
+<div class="fld"><label id="l-cov" for="cov"></label><input id="cov" type="number" min="0" step="any" inputmode="decimal" value="0"></div>
 <button type="submit" class="btn btn-royal calc-submit" id="go"></button>
 </form></div>
 <div class="calc-card results" id="results"><div class="calc-step" id="t-res"></div><div id="out"></div>
@@ -610,7 +610,7 @@ p0:"Minimums only",p1:"Highest interest first (avalanche)",p2:"Smallest balance 
 never:"not on this track",mo:"{y} yr {m} mo",saves:"saves {s}",none:"-",
 payNote:"Avalanche usually costs the least in interest. Snowball gives quicker wins, which helps some people stay with it. Either beats minimums only.",
 noDebt:"You entered no debts. Nice. Your options below are about protection and savings.",
-optT:"4. Your options, compared honestly",
+optT:"3. Your options, compared honestly",
 o:[
 ["Pay extra toward debt","Guaranteed return equal to the interest rate you stop paying. Beats almost anything else for high-rate cards and loans. Costs: less cash on hand, so build a small cushion first."],
 ["Build an emergency cushion","A goal of 3 months of spending is a common target: {goal}. You have {sav}. A cushion keeps one bad month from becoming new debt."],
@@ -619,16 +619,7 @@ o:[
 ["Do nothing different","Minimum payments mostly feed interest. See the table above for what that costs you."]],
 needNone:"no gap based on what you entered",
 need:"{n}",
-needTxt:"about {n} (see the DIME estimate above)",
-d_mort:"Remaining mortgage balance ($)",d_rent:"If you rent instead: monthly rent ($)",d_kids:"Children who may go to college",d_coll:"Estimated college cost per child, per year ($)",d_leg:"Legacy or trust goal you want to leave ($)",
-h_rent:"If you rent, we count 5 years of rent in place of a mortgage. Leave blank what does not apply.",
-dimeT:"3. How much life insurance could be needed (DIME)",
-dimeIntro:"DIME is a common rule of thumb. It adds up five things your family would need covered if your income stopped:",
-dimeRows:["Debt","Income","Mortgage or rent","Education","Legacy"],
-dimeHow:["Your debts from Step 3","10 years of your yearly income (counted when someone depends on you)","Remaining mortgage, or 5 years of rent","College cost per year x 4 years x children","Your legacy or trust goal"],
-dimeTot:"Total need",dimeMinus:"Minus existing life insurance and savings",dimeGap:"Estimated gap",
-dimeNone:"On these numbers, your coverage and savings already meet the DIME total.",
-dimeNote:"A rule of thumb, not a quote or a recommendation. Your real need depends on your family, goals and what you already have.",
+needTxt:"about {n} (debts plus {y} years of income, minus your coverage and savings)",
 notes:"Educational estimates only. Not financial, tax, legal or investment advice, and not an offer or recommendation of any product. Results use simple math from the numbers you typed and assume fixed rates and no new debt. Real balances, fees and rates change. Nothing you enter is stored or sent anywhere. Talk it through with us, free, and compare options before you decide."},
 es:{eyebrow:"Herramienta gratis - 3 minutos",h1:"Revisi&oacute;n de <span class='accent'>Deudas y Flujo de Efectivo</span>",
 sub:"Vea a d&oacute;nde va su dinero cada mes, qu&eacute; tan r&aacute;pido puede salir de deudas y cu&aacute;les son sus opciones. No se guarda nada. No se vende nada.",
@@ -649,7 +640,7 @@ p0:"Solo m&iacute;nimos",p1:"Mayor inter&eacute;s primero (avalancha)",p2:"Menor
 never:"no avanza as&iacute;",mo:"{y} a&ntilde;os {m} meses",saves:"ahorra {s}",none:"-",
 payNote:"La avalancha normalmente cuesta menos intereses. La bola de nieve da victorias m&aacute;s r&aacute;pidas, lo que ayuda a algunos a no rendirse. Ambas son mejores que solo los m&iacute;nimos.",
 noDebt:"No anot&oacute; deudas. Excelente. Sus opciones abajo tratan de protecci&oacute;n y ahorro.",
-optT:"4. Sus opciones, comparadas con honestidad",
+optT:"3. Sus opciones, comparadas con honestidad",
 o:[
 ["Pagar extra a la deuda","Retorno garantizado igual a la tasa de inter&eacute;s que deja de pagar. Supera a casi todo para tarjetas y pr&eacute;stamos de tasa alta. Costo: menos efectivo disponible, as&iacute; que primero arme un colch&oacute;n peque&ntilde;o."],
 ["Armar un colch&oacute;n de emergencia","Una meta com&uacute;n es 3 meses de gastos: {goal}. Usted tiene {sav}. Un colch&oacute;n evita que un mal mes se vuelva deuda nueva."],
@@ -657,18 +648,9 @@ o:[
 ["Seguro de vida","Solo importa si alguien depende de su ingreso o heredar&iacute;a su deuda. Necesidad aproximada: {need}. El seguro a t&eacute;rmino suele ser la forma m&aacute;s barata de cubrir una deuda o ingreso por un tiempo fijo. El permanente (vida entera) cuesta m&aacute;s, acumula valor en efectivo despacio y en los primeros a&ntilde;os puede recibir menos de lo que pag&oacute;. Pedir prestado contra la p&oacute;liza cobra intereses. Puede servir para una meta de legado a largo plazo, pero rara vez es la forma m&aacute;s r&aacute;pida de salir de deudas. Compare cotizaciones antes de comprar."],
 ["No cambiar nada","Los pagos m&iacute;nimos mayormente alimentan intereses. Vea la tabla de arriba para saber cu&aacute;nto cuesta."]],
 needNone:"sin brecha seg&uacute;n lo que anot&oacute;",
-needTxt:"unos {n} (vea el estimado DIME arriba)",
-d_mort:"Saldo restante de la hipoteca ($)",d_rent:"Si renta: renta mensual ($)",d_kids:"Hijos que podr&iacute;an ir a la universidad",d_coll:"Costo estimado de universidad por hijo, por a&ntilde;o ($)",d_leg:"Meta de legado o fideicomiso que desea dejar ($)",
-h_rent:"Si renta, contamos 5 a&ntilde;os de renta en lugar de una hipoteca. Deje en blanco lo que no aplique.",
-dimeT:"3. Cu&aacute;nto seguro de vida podr&iacute;a hacer falta (DIME)",
-dimeIntro:"DIME es una regla com&uacute;n. Suma cinco cosas que su familia necesitar&iacute;a cubrir si su ingreso se detuviera:",
-dimeRows:["Deudas","Ingreso","Hipoteca o renta","Educaci&oacute;n","Legado"],
-dimeHow:["Sus deudas del Paso 3","10 a&ntilde;os de su ingreso anual (se cuenta si alguien depende de usted)","Hipoteca restante, o 5 a&ntilde;os de renta","Costo de universidad por a&ntilde;o x 4 a&ntilde;os x hijos","Su meta de legado o fideicomiso"],
-dimeTot:"Necesidad total",dimeMinus:"Menos seguro de vida actual y ahorros",dimeGap:"Brecha estimada",
-dimeNone:"Con estos n&uacute;meros, su cobertura y ahorros ya cubren el total DIME.",
-dimeNote:"Una regla general, no una cotizaci&oacute;n ni una recomendaci&oacute;n. Su necesidad real depende de su familia, sus metas y lo que ya tiene.",
+needTxt:"unos {n} (deudas m&aacute;s {y} a&ntilde;os de ingreso, menos su cobertura y ahorros)",
 notes:"Solo estimados educativos. No es asesor&iacute;a financiera, de impuestos, legal ni de inversi&oacute;n, ni oferta o recomendaci&oacute;n de ning&uacute;n producto. Los resultados usan matem&aacute;ticas simples con los n&uacute;meros que anot&oacute; y suponen tasas fijas y ninguna deuda nueva. Saldos, cuotas y tasas reales cambian. Nada de lo que anota se guarda ni se env&iacute;a. H&aacute;blelo con nosotros, gratis, y compare opciones antes de decidir."}};
-const _q=new URLSearchParams(location.search);const EMBED=_q.get('embed')==='1';let LANG=_q.get('lang')==='es'?'es':_q.get('lang')==='en'?'en':(document.documentElement.lang==='es'||/^es/i.test(navigator.language||''))?'es':'en';
+let LANG=/[?&]lang=es/i.test(location.search)?'es':'en';
 let debtCount=0;
 const $=id=>document.getElementById(id);
 function fmt(n){return '$'+Math.round(n).toLocaleString('en-US');}
@@ -682,7 +664,7 @@ function setLang(l){
   $('l-income').innerHTML=t.income;$('h-income').innerHTML=t.hincome;$('h-exp').innerHTML=t.hexp;
   t.e.forEach((x,i)=>$('l-e'+(i+1)).innerHTML=x+' ($)');
   $('adddebt').innerHTML=t.add;$('l-extra').innerHTML=t.extra;$('h-extra').innerHTML=t.hextra;
-  $('l-sav').innerHTML=t.sav;$('l-dep').innerHTML=t.dep;$('l-cov').innerHTML=t.cov;['mort','rent','kids','coll','leg'].forEach(k=>$('l-'+k).innerHTML=t['d_'+k]);$('h-rent').innerHTML=t.h_rent;$('go').innerHTML=t.go;
+  $('l-sav').innerHTML=t.sav;$('l-dep').innerHTML=t.dep;$('l-cov').innerHTML=t.cov;$('go').innerHTML=t.go;
   $('t-res').innerHTML=t.res;$('bk').innerHTML=t.book;$('hcta').innerHTML=t.book;$('pr').innerHTML=t.print;$('note').innerHTML=t.notes;
   $('langbtn').innerHTML=l==='en'?'Espa&ntilde;ol':'English';
   document.querySelectorAll('.debt-row').forEach(r=>{const L=r.querySelectorAll('.dlab');[t.dname,t.dbal,t.drate,t.dmin].forEach((x,i)=>L[i].innerHTML=x);});
@@ -753,16 +735,8 @@ function compute(quiet){
     h+='<table class="r-table" style="margin-top:10px">'+order.map((d,i)=>'<tr><td>#'+(i+1)+'</td><td>'+esc(d.name)+'</td><td>'+fmt(d.bal)+'</td><td>'+d.rate+'%</td></tr>').join('')+'</table>';
   }
   h+='</div>';
-  const mort=val('mort'),rent=val('rent'),kids=val('kids'),coll=val('coll'),leg=val('leg');
-  const dI=dep>0?income*12*10:0,dM=mort>0?mort:rent*60,dE=coll*4*kids;
-  const dimeParts=[totDebt,dI,dM,dE,leg];
-  const dimeTotal=dimeParts.reduce((a,b)=>a+b,0);
-  const need=Math.max(0,dimeTotal-cov-sav);
-  const needS=dimeTotal>0?(need>0?tpl(t.needTxt,{n:fmt(need)}):t.needNone):t.needNone;
-  h+='<div class="r-block"><h3>'+t.dimeT+'</h3><p class="r-line">'+t.dimeIntro+'</p><table class="r-table">'+
-  dimeParts.map((v,i)=>'<tr><td><b>'+'DIMEL'.charAt(i)+'</b> '+t.dimeRows[i]+'<br><span style="font-size:12px;color:#68789a">'+t.dimeHow[i]+'</span></td><td>'+fmt(v)+'</td></tr>').join('')+
-  '<tr><td><b>'+t.dimeTot+'</b></td><td><b>'+fmt(dimeTotal)+'</b></td></tr><tr><td>'+t.dimeMinus+'</td><td>-'+fmt(Math.min(dimeTotal,cov+sav))+'</td></tr></table>'+
-  '<div class="r-big'+(need>0?'':' ok')+'" style="margin-top:10px">'+fmt(need)+'</div><p class="r-line"><b>'+t.dimeGap+'</b>. '+(need>0?'':t.dimeNone+' ')+t.dimeNote+'</p></div>';
+  const need=Math.max(0,income*12*Math.max(dep>0?10:0,0)+totDebt-cov-sav);
+  const needS=dep>0||totDebt>0?(need>0?tpl(t.needTxt,{n:fmt(need),y:10}):t.needNone):t.needNone;
   h+='<div class="r-block"><h3>'+t.optT+'</h3>';
   t.o.forEach((o,i)=>{
     let body=tpl(o[1],{goal:fmt((exp+totMin)*3),sav:fmt(sav),need:needS});
@@ -770,8 +744,8 @@ function compute(quiet){
   });
   h+='</div>';
   $('out').innerHTML=h;
-  const r=$('results');r.classList.add('show');if(!quiet&&!EMBED)r.scrollIntoView({behavior:'smooth',block:'start'});
+  const r=$('results');r.classList.add('show');if(!quiet)r.scrollIntoView({behavior:'smooth',block:'start'});
 }
 setLang(LANG);addDebt();addDebt();
 </script>
-<script>if(EMBED){var _p=function(){parent.postMessage({type:"calc-height",h:document.documentElement.scrollHeight},location.origin)};window.addEventListener("load",_p);if(window.ResizeObserver)new ResizeObserver(_p).observe(document.body);}</script></body></html>
+</body></html>

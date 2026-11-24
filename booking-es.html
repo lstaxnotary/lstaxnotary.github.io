@@ -76,11 +76,13 @@ footer{padding:10px 0 40px;font-size:12px;color:#8a94a6}
 </div>
 
 <div class="panel" id="panel-paid">
-<div class="paid-box"><strong>Depósito pagado.</strong> Ahora díganos su fecha y hora preferida y envíenos su solicitud. Confirmamos la hora exacta con usted personalmente.</div>
+<div class="paid-box"><strong>¡Gracias!</strong> Recibimos su depósito de $25, que se acredita a su total. Ahora elija su día y hora preferidos abajo. Las citas tienen unas 2 horas de separación. Luis le escribirá por texto o correo para confirmar la hora y el lugar exactos. Traiga una identificación oficial con foto vigente de cada firmante y sus documentos SIN FIRMAR. Lista completa: <a href="prepare.html?lang=es">lstaxnotary.com/prepare</a></div>
 <div class="step">4 · Fecha y hora</div>
 <div class="chips" id="days"></div>
 <div class="chips" id="times"></div>
-<p class="tz">Horarios en hora del Este (GMT-05:00). Su selección es una solicitud; confirmamos la hora exacta con usted.</p>
+<p class="tz" id="time-note" style="font-weight:700;color:#1f5fd2"></p>
+<p class="tz">Elija el día y luego la hora. Las citas tienen unas 2 horas de separación. Lunes y martes: de 8 AM a 8 PM, en persona o en línea. Los demás días: solo en línea, de 7 AM a 12 PM. Todas las horas son de la costa este (ET). Su selección es una solicitud; Luis le confirma la hora exacta.</p>
+<p class="tz">¿Necesita un horario tarde o urgente? Lunes y martes de 11 PM a 3 AM, o después de las 10 PM otros días (en línea o móvil), puede ser posible por solicitud. Cuéntenos qué necesita y cuánto tiempo tomará. No está garantizado; Luis lo confirma.</p>
 <div class="step">5 · Envíe su solicitud</div>
 <label class="field"><span>Su nombre</span><input type="text" id="f-name" autocomplete="name"></label>
 <label class="field"><span>Correo que usó en el pago</span><input type="email" id="f-email" autocomplete="email"></label>
@@ -150,7 +152,6 @@ const SERVICES=[
   base:'Incluye trámites de LLC en Florida y los cargos de presentación del estado requeridos, un sitio web bilingüe con videos, un logotipo, optimización para motores de búsqueda (SEO), configuración de listados de negocios, y los costos iniciales de dominio y correo empresarial. Las cuentas se crean a su nombre. Las suscripciones y renovaciones continuas son su responsabilidad.',
   addons:[]}
 ];
-const TIMES=['9:00 AM','10:00 AM','11:00 AM','12:00 PM','1:00 PM','2:00 PM','3:00 PM','4:00 PM','5:00 PM','6:00 PM'];
 let selSvc=null,selDay=null,selTime=null;
 const $=id=>document.getElementById(id);
 const PAID=new URLSearchParams(location.search).get('paid')==='1';
@@ -200,15 +201,25 @@ for(let i=0;i<7;i++){
  const b=document.createElement('button');b.className='chip';b.type='button';
  b.innerHTML='<small>'+top+'</small>'+mo[d.getMonth()]+' '+d.getDate();
  b.dataset.val=wd[d.getDay()]+', '+d.getDate()+' de '+mo[d.getMonth()]+' de '+d.getFullYear();
- b.addEventListener('click',()=>{daysBox.querySelectorAll('.chip').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');selDay=b.dataset.val;});
+ b.addEventListener('click',()=>{daysBox.querySelectorAll('.chip').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');selDay=b.dataset.val;renderTimes(d.getDay());});
  daysBox.appendChild(b);
 }
 const timesBox=$('times');
-TIMES.forEach(t=>{
- const b=document.createElement('button');b.className='chip';b.type='button';b.textContent=t;
- b.addEventListener('click',()=>{timesBox.querySelectorAll('.chip').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');selTime=t;});
- timesBox.appendChild(b);
-});
+const SLOTS_MT=['8:00 AM','10:00 AM','12:00 PM','2:00 PM','4:00 PM','6:00 PM'];
+const SLOTS_ONLINE=['7:00 AM','9:00 AM','11:00 AM'];
+function renderTimes(dow){
+ timesBox.innerHTML='';selTime=null;
+ const note=$('time-note');
+ if(dow===null){note.textContent='Primero elija un día.';return;}
+ const mt=(dow===1||dow===2);
+ note.textContent=mt?'':'Solo citas en línea este día.';
+ (mt?SLOTS_MT:SLOTS_ONLINE).forEach(t=>{
+  const b=document.createElement('button');b.className='chip';b.type='button';b.textContent=t;
+  b.addEventListener('click',()=>{timesBox.querySelectorAll('.chip').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');selTime=t;});
+  timesBox.appendChild(b);
+ });
+}
+renderTimes(null);
 
 let savedAdds=[];
 function showPaid(restore){

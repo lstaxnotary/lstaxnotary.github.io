@@ -550,7 +550,7 @@ header{background:#fdfaf3}
 .lang-btn{float:right;background:none;border:1.5px solid #ecc95f;color:#ecc95f;border-radius:999px;padding:6px 14px;font-weight:700;cursor:pointer}
 @media(max-width:640px){.exp-grid{grid-template-columns:1fr}}
 </style>
-</head>
+<script>if(/[?&]embed=1/.test(location.search)){document.write("<style>header,footer,.fna-hero,.topbar{display:none!important}body{background:#fff}</style>");}</script></head>
 <body>
 <header><div class="wrap"><div class="brand"><img class="brand-logo" src="/logo-badge.svg" alt="L&S Tax and Notary Services logo"></div>
 <a class="header-cta" href="index.html#book" id="hcta">Book My Free Analysis</a></div></header>
@@ -650,7 +650,7 @@ o:[
 needNone:"sin brecha seg&uacute;n lo que anot&oacute;",
 needTxt:"unos {n} (deudas m&aacute;s {y} a&ntilde;os de ingreso, menos su cobertura y ahorros)",
 notes:"Solo estimados educativos. No es asesor&iacute;a financiera, de impuestos, legal ni de inversi&oacute;n, ni oferta o recomendaci&oacute;n de ning&uacute;n producto. Los resultados usan matem&aacute;ticas simples con los n&uacute;meros que anot&oacute; y suponen tasas fijas y ninguna deuda nueva. Saldos, cuotas y tasas reales cambian. Nada de lo que anota se guarda ni se env&iacute;a. H&aacute;blelo con nosotros, gratis, y compare opciones antes de decidir."}};
-let LANG=(document.documentElement.lang==='es'||/^es/i.test(navigator.language||''))?'es':'en';
+const _q=new URLSearchParams(location.search);const EMBED=_q.get('embed')==='1';let LANG=_q.get('lang')==='es'?'es':_q.get('lang')==='en'?'en':(document.documentElement.lang==='es'||/^es/i.test(navigator.language||''))?'es':'en';
 let debtCount=0;
 const $=id=>document.getElementById(id);
 function fmt(n){return '$'+Math.round(n).toLocaleString('en-US');}
@@ -744,8 +744,8 @@ function compute(quiet){
   });
   h+='</div>';
   $('out').innerHTML=h;
-  const r=$('results');r.classList.add('show');if(!quiet)r.scrollIntoView({behavior:'smooth',block:'start'});
+  const r=$('results');r.classList.add('show');if(!quiet&&!EMBED)r.scrollIntoView({behavior:'smooth',block:'start'});
 }
 setLang(LANG);addDebt();addDebt();
 </script>
-</body></html>
+<script>if(EMBED){var _p=function(){parent.postMessage({type:"calc-height",h:document.documentElement.scrollHeight},location.origin)};window.addEventListener("load",_p);if(window.ResizeObserver)new ResizeObserver(_p).observe(document.body);}</script></body></html>

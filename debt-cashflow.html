@@ -760,7 +760,7 @@ function compute(quiet){
   const need=Math.max(0,dimeTotal-cov-sav);
   const needS=dimeTotal>0?(need>0?tpl(t.needTxt,{n:fmt(need)}):t.needNone):t.needNone;
   h+='<div class="r-block"><h3>'+t.dimeT+'</h3><p class="r-line">'+t.dimeIntro+'</p><table class="r-table">'+
-  dimeParts.map((v,i)=>'<tr><td><b>'+t.dimeRows[i].charAt(0)+'</b> '+t.dimeRows[i]+'<br><span style="font-size:12px;color:#68789a">'+t.dimeHow[i]+'</span></td><td>'+fmt(v)+'</td></tr>').join('')+
+  dimeParts.map((v,i)=>'<tr><td><b>'+'DIMEL'.charAt(i)+'</b> '+t.dimeRows[i]+'<br><span style="font-size:12px;color:#68789a">'+t.dimeHow[i]+'</span></td><td>'+fmt(v)+'</td></tr>').join('')+
   '<tr><td><b>'+t.dimeTot+'</b></td><td><b>'+fmt(dimeTotal)+'</b></td></tr><tr><td>'+t.dimeMinus+'</td><td>-'+fmt(Math.min(dimeTotal,cov+sav))+'</td></tr></table>'+
   '<div class="r-big'+(need>0?'':' ok')+'" style="margin-top:10px">'+fmt(need)+'</div><p class="r-line"><b>'+t.dimeGap+'</b>. '+(need>0?'':t.dimeNone+' ')+t.dimeNote+'</p></div>';
   h+='<div class="r-block"><h3>'+t.optT+'</h3>';

@@ -76,11 +76,13 @@ footer{padding:10px 0 40px;font-size:12px;color:#8a94a6}
 </div>
 
 <div class="panel" id="panel-paid">
-<div class="paid-box"><strong>Deposit paid.</strong> Now tell us your preferred date and time and send us your request. We confirm the exact time with you personally.</div>
+<div class="paid-box"><strong>Thank you!</strong> Your $25 deposit is received and credited to your total. Now choose your preferred day and time below. Appointments are about 2 hours apart. Luis will text or email you to confirm the exact time and place. Bring a valid photo ID for every signer and your documents UNSIGNED. Full checklist: <a href="prepare.html">lstaxnotary.com/prepare</a></div>
 <div class="step">4 · Date and time</div>
 <div class="chips" id="days"></div>
 <div class="chips" id="times"></div>
-<p class="tz">All times Eastern Time (GMT-05:00). Your selection is a request; we confirm the exact time with you.</p>
+<p class="tz" id="time-note" style="font-weight:700;color:#1f5fd2"></p>
+<p class="tz">Pick the day, then a time. Appointments are about 2 hours apart. Monday and Tuesday: 8 AM to 8 PM, in person or online. Other days: online only, 7 AM to 12 PM. All times Eastern. Your pick is a request; Luis confirms the exact time with you.</p>
+<p class="tz">Need a late or urgent time? Monday and Tuesday 11 PM to 3 AM, or after 10 PM on other days (online or mobile), may be possible by request. Tell us what you need and how long it will take. Not guaranteed; Luis confirms.</p>
 <div class="step">5 · Send your request</div>
 <label class="field"><span>Your name</span><input type="text" id="f-name" autocomplete="name"></label>
 <label class="field"><span>Email you used at payment</span><input type="email" id="f-email" autocomplete="email"></label>
@@ -150,7 +152,6 @@ const SERVICES=[
   base:'Includes Florida LLC paperwork and required state filing fees, a bilingual website with videos, a logo, search engine optimization (SEO), business-listing setup, and initial domain and business-email costs. Accounts are set up in your name. Ongoing subscriptions and renewals are your responsibility.',
   addons:[]}
 ];
-const TIMES=['9:00 AM','10:00 AM','11:00 AM','12:00 PM','1:00 PM','2:00 PM','3:00 PM','4:00 PM','5:00 PM','6:00 PM'];
 let selSvc=null,selDay=null,selTime=null;
 const $=id=>document.getElementById(id);
 const PAID=new URLSearchParams(location.search).get('paid')==='1';
@@ -200,15 +201,25 @@ for(let i=0;i<7;i++){
  const b=document.createElement('button');b.className='chip';b.type='button';
  b.innerHTML='<small>'+top+'</small>'+mo[d.getMonth()]+' '+d.getDate();
  b.dataset.val=wd[d.getDay()]+', '+mo[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear();
- b.addEventListener('click',()=>{daysBox.querySelectorAll('.chip').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');selDay=b.dataset.val;});
+ b.addEventListener('click',()=>{daysBox.querySelectorAll('.chip').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');selDay=b.dataset.val;renderTimes(d.getDay());});
  daysBox.appendChild(b);
 }
 const timesBox=$('times');
-TIMES.forEach(t=>{
- const b=document.createElement('button');b.className='chip';b.type='button';b.textContent=t;
- b.addEventListener('click',()=>{timesBox.querySelectorAll('.chip').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');selTime=t;});
- timesBox.appendChild(b);
-});
+const SLOTS_MT=['8:00 AM','10:00 AM','12:00 PM','2:00 PM','4:00 PM','6:00 PM'];
+const SLOTS_ONLINE=['7:00 AM','9:00 AM','11:00 AM'];
+function renderTimes(dow){
+ timesBox.innerHTML='';selTime=null;
+ const note=$('time-note');
+ if(dow===null){note.textContent='Pick a day first.';return;}
+ const mt=(dow===1||dow===2);
+ note.textContent=mt?'':'Online appointments only on this day.';
+ (mt?SLOTS_MT:SLOTS_ONLINE).forEach(t=>{
+  const b=document.createElement('button');b.className='chip';b.type='button';b.textContent=t;
+  b.addEventListener('click',()=>{timesBox.querySelectorAll('.chip').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');selTime=t;});
+  timesBox.appendChild(b);
+ });
+}
+renderTimes(null);
 
 let savedAdds=[];
 function showPaid(restore){

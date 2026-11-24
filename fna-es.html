@@ -541,7 +541,7 @@
 .calc{background:#f8f3ea}
 header{background:#fdfaf3}
 </style>
-</head>
+<script>if(/[?&]embed=1/.test(location.search)){document.write("<style>header,footer,.fna-hero,.topbar{display:none!important}body{background:#fff}</style>");}</script></head>
 <body>
 <header>
   <div class="wrap">
@@ -704,10 +704,10 @@ function compute(){
   document.getElementById('r-output').innerHTML = html;
   const r = document.getElementById('results');
   r.classList.add('show');
-  r.scrollIntoView({behavior:'smooth', block:'start'});
+  if(!/[?&]embed=1/.test(location.search))r.scrollIntoView({behavior:'smooth', block:'start'});
 }
 
 addDebt(); addDebt();
 </script>
-</body>
+<script>if(/[?&]embed=1/.test(location.search)){var _p=function(){parent.postMessage({type:"calc-height",h:document.documentElement.scrollHeight},location.origin)};window.addEventListener("load",_p);if(window.ResizeObserver)new ResizeObserver(_p).observe(document.body);}</script></body>
 </html>
